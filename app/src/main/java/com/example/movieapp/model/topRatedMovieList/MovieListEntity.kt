@@ -3,7 +3,6 @@ package com.example.movieapp.model.topRatedMovieList
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.movieapp.util.Constants.TOP_RATED_MOVIES_TABLE
-import kotlinx.serialization.Serializable
 
 @Entity(tableName = TOP_RATED_MOVIES_TABLE)
 data class MovieListEntity(
@@ -11,7 +10,6 @@ data class MovieListEntity(
     val id: String,
     val adult: Boolean,
     val backdrop_path: String,
-//    val genre_ids: List<Int>,
     val original_language: String,
     val original_title: String,
     val overview: String,

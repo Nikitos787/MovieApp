@@ -1,6 +1,5 @@
 package com.example.movieapp.data.repository
 
-import android.util.Log
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
@@ -24,9 +23,7 @@ class MovieRepository @Inject constructor(
 
     fun getAllMovies(): Flow<PagingData<MovieListEntity>> {
         val pagingSourceFactory = {
-            val allMovies = database.getTopRatedMoviesDao().getAllMovies()
-            Log.d("Repo", allMovies.invalid.toString())
-            allMovies
+            database.getTopRatedMoviesDao().getAllMovies()
         }
         return Pager(
             config = PagingConfig(pageSize = ITEMS_PER_PAGE),
@@ -39,22 +36,16 @@ class MovieRepository @Inject constructor(
     }
 
     fun getMovieDetails(id: String): Flow<Resource<MovieDetailsEntity>> = flow {
-        Log.d("Repo", id + "StartLoading")
-
         emit(Resource.Loading())
         try {
-            Log.d("Repo", "Try to get data from api with id $id")
             val response = movieApi.getMovieDetails(id)
             emit(Resource.Success(data = response))
-            Log.d("Repo", response.toString() + "Succes")
         } catch (e: Exception) {
             emit(
                 Resource.Error(
                     message = "Oops, something went wrong!"
                 )
             )
-            Log.d("Repo", "ERROR hht")
-
         }
     }
 }

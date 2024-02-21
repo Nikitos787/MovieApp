@@ -1,14 +1,13 @@
 package com.example.movieapp.presentation.screen.detail
 
-import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.ExperimentalPagingApi
-import androidx.paging.PagingData
 import com.example.movieapp.data.repository.MovieRepository
 import com.example.movieapp.model.detail.MovieDetailsEntity
-import com.example.movieapp.model.topRatedMovieList.MovieListEntity
+import com.example.movieapp.util.Constants.EMPTY
+import com.example.movieapp.util.Constants.ID
 import com.example.movieapp.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -18,7 +17,6 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-
 
 @ExperimentalPagingApi
 @HiltViewModel
@@ -32,17 +30,11 @@ class MovieDetailViewModel @Inject constructor(
     val moviesState: MutableStateFlow<Resource<MovieDetailsEntity>> get() = _moviesState
 
     init {
-        Log.d("ViewModel", "init block")
-
-        viewModelScope.launch {
-            getMovieDetail()
-        }
+        viewModelScope.launch { getMovieDetail() }
     }
 
     suspend fun getMovieDetail() {
-
-        val id = savedStateHandle.getStateFlow<String>("id", "")
-        Log.d("ViewModel", "in method getMovieDetails with id: $id")
+        val id = savedStateHandle.getStateFlow(ID, EMPTY)
         repository.getMovieDetails(id.value)
             .flowOn(Dispatchers.IO)
             .stateIn(
@@ -56,6 +48,6 @@ class MovieDetailViewModel @Inject constructor(
     }
 
     fun setId(id: String) {
-        savedStateHandle["id"] = id
+        savedStateHandle[ID] = id
     }
 }

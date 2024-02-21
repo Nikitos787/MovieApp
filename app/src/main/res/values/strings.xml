@@ -3,4 +3,20 @@
     <string name="strRetry">Retry</string>
     <string name="strFetchingDataFromServer">Fetching data from server</string>
     <string name="strOriginalLanguage">Original Language</string>
+    <string name="Error_message">Oops, something went wrong!"</string>
+    <string name="more_about_movie">More about movie: %1$s</string>
+    <string name="icon_for_back">icon for back</string>
+    <string name="default_title">Default title</string>
+    <string name="expand_row_icon">Expand row icon</string>
+    <string name="more_info">More info:</string>
+    <string name="released_date">"Released Date: "</string>
+    <string name="duration">"Duration: "</string>
+    <string name="revenue">"Revenue: "</string>
+    <string name="budget">"Budget: "</string>
+    <string name="description">Description</string>
+    <string name="default_overview">Default overview</string>
+    <string name="retry">Retry</string>
+    <string name="rating_icon">rating icon</string>
+    <string name="movie_poster">movie poster</string>
+    <string name="header">header</string>
 </resources>

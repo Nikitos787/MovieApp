@@ -9,6 +9,7 @@ import androidx.navigation.navArgument
 import androidx.paging.ExperimentalPagingApi
 import com.example.movieapp.presentation.screen.detail.MovieDetailScreen
 import com.example.movieapp.presentation.screen.home.HomeScreen
+import com.example.movieapp.util.Constants
 
 @ExperimentalPagingApi
 @Composable
@@ -22,7 +23,7 @@ fun SetupNavGraph(navHostController: NavHostController) {
         }
         composable(route = Screen.Details.route,
             arguments = listOf(
-                navArgument("id") {
+                navArgument(Constants.ID) {
                     type = NavType.StringType
                 }
             )

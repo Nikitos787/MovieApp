@@ -8,6 +8,11 @@ object Constants {
     const val AUTHORIZATION_BEARER_HEADER = "Authorization: Bearer"
     const val MOVIE_DATABASE_NAME = "movies_database"
     const val MOVIE_TOP_RATED_PATH = "movie/top_rated"
-    const val ID_PATH = "/{id}"
+    const val ID_PATH = "movie/{id}"
     const val ITEMS_PER_PAGE = 20
+    const val PAGE_QUERY = "page"
+    const val ID = "id"
+    const val EMPTY = ""
+    const val HOME_SCREEN_PATH = "home_screen"
+    const val DETAIL_SCREEN_PATH = "details_screen"
 }

@@ -1,6 +1,5 @@
 package com.example.movieapp.presentation.screen.common
 
-import android.util.Log
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -34,9 +33,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.paging.LoadState
@@ -49,7 +48,7 @@ import com.example.movieapp.model.topRatedMovieList.MovieListEntity
 import com.example.movieapp.util.Constants.BASE_URL_FOR_IMAGE
 
 @Composable
-fun ListContent(
+fun MovieListContent(
     items: LazyPagingItems<MovieListEntity>,
     onClick: (String) -> Unit
 ) {
@@ -61,7 +60,7 @@ fun ListContent(
             Spacer(modifier = Modifier.height(20.dp))
             Image(
                 painter = painterResource(id = R.drawable.ic_header_of_app),
-                contentDescription = "header",
+                contentDescription = stringResource(R.string.header),
                 modifier = Modifier
                     .fillMaxWidth()
                     .align(Alignment.CenterHorizontally)
@@ -75,12 +74,11 @@ fun ListContent(
                 items(count = items.itemCount) { index ->
                     val topRatedMovie = items[index]
                     topRatedMovie?.let {
-                        Log.d("ListContent", "in lazy colum with id: ${topRatedMovie.id}")
                         TopRatedMovieItem(
                             movieListEntity = it,
                             click = {
-                                Log.d("DetailsScreen", "click")
-                                onClick(it.id) })
+                                onClick(it.id)
+                            })
 
                     }
                 }
@@ -148,7 +146,7 @@ fun TopRatedMovieItem(
     ) {
         Image(
             painter = painter,
-            contentDescription = "movie poster",
+            contentDescription = stringResource(R.string.movie_poster),
             modifier = Modifier
                 .fillMaxSize()
                 .clip(RoundedCornerShape(8.dp))
@@ -192,7 +190,11 @@ fun RatingCounter(modifier: Modifier, votes: String) {
         horizontalArrangement = Arrangement.End,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Icon(imageVector = Icons.Default.Star, contentDescription = "rating icon", tint = Color.Red)
+        Icon(
+            imageVector = Icons.Default.Star,
+            contentDescription = stringResource(R.string.rating_icon),
+            tint = Color.Red
+        )
         Text(
             text = votes,
             color = Color.White,
@@ -201,29 +203,6 @@ fun RatingCounter(modifier: Modifier, votes: String) {
             overflow = TextOverflow.Ellipsis
         )
     }
-
-}
-
-@Preview
-@Composable
-fun TopRatedMovieItemPrev() {
-    TopRatedMovieItem(
-        movieListEntity = MovieListEntity(
-            "1",
-            true,
-            "/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg",
-            "en",
-            "Somthing",
-            "fdfdf",
-            10.1,
-            "/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg",
-            "2020-01-01",
-            "Some title",
-            true,
-            12.2,
-            1
-        )
-    ) {}
 }
 
 @Composable
@@ -236,11 +215,11 @@ fun RetrySection(error: String, onRetry: () -> Unit) {
         )
         Spacer(modifier = Modifier.height(8.dp))
         Button(
-            onClick = { onRetry },
+            onClick = { onRetry() },
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
         ) {
-            Text(text = "Retry")
+            Text(text = stringResource(R.string.retry))
         }
     }
 }
