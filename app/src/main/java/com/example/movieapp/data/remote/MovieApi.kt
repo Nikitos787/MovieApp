@@ -2,7 +2,7 @@ package com.example.movieapp.data.remote
 
 import com.example.movieapp.BuildConfig
 import com.example.movieapp.model.detail.MovieDetailsEntity
-import com.example.movieapp.model.topRatedMovieList.MovieListResponse
+import com.example.movieapp.model.list.MovieListResponse
 import com.example.movieapp.util.Constants.AUTHORIZATION_BEARER_HEADER
 import com.example.movieapp.util.Constants.ID
 import com.example.movieapp.util.Constants.ID_PATH

@@ -6,7 +6,7 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.example.movieapp.data.repository.MovieRepository
-import com.example.movieapp.model.topRatedMovieList.MovieListEntity
+import com.example.movieapp.model.list.MovieListEntity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -8,7 +8,7 @@ import com.example.movieapp.data.local.MovieDatabase
 import com.example.movieapp.data.local.paging.MoviesMediator
 import com.example.movieapp.data.remote.MovieApi
 import com.example.movieapp.model.detail.MovieDetailsEntity
-import com.example.movieapp.model.topRatedMovieList.MovieListEntity
+import com.example.movieapp.model.list.MovieListEntity
 import com.example.movieapp.util.Constants.ITEMS_PER_PAGE
 import com.example.movieapp.util.Resource
 import kotlinx.coroutines.flow.Flow

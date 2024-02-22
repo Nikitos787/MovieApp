@@ -4,8 +4,8 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.example.movieapp.data.local.dao.TopRatedMoviesDao
 import com.example.movieapp.data.local.dao.TopRatedMoviesRemoteKeysDao
-import com.example.movieapp.model.topRatedMovieList.MovieListEntity
-import com.example.movieapp.model.topRatedMovieList.MovieRemoteKeys
+import com.example.movieapp.model.list.MovieListEntity
+import com.example.movieapp.model.list.MovieRemoteKeys
 
 @Database(
     entities = [MovieListEntity::class, MovieRemoteKeys::class],

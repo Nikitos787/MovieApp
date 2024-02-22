@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.navigation.compose.rememberNavController
 import androidx.paging.ExperimentalPagingApi
 import com.example.movieapp.presentation.navigation.SetupNavGraph
+import com.example.movieapp.ui.theme.MovieAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -14,8 +15,11 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            val navHostController = rememberNavController()
-            SetupNavGraph(navHostController = navHostController)
+            MovieAppTheme {
+                val navHostController = rememberNavController()
+                SetupNavGraph(navHostController = navHostController)
+            }
+
         }
     }
 }

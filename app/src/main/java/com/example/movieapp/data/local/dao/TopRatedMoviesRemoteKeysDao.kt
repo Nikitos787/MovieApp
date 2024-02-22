@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.movieapp.model.topRatedMovieList.MovieRemoteKeys
+import com.example.movieapp.model.list.MovieRemoteKeys
 import com.example.movieapp.util.Constants
 
 @Dao

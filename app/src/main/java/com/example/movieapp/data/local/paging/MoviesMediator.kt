@@ -7,8 +7,8 @@ import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
 import com.example.movieapp.data.local.MovieDatabase
 import com.example.movieapp.data.remote.MovieApi
-import com.example.movieapp.model.topRatedMovieList.MovieListEntity
-import com.example.movieapp.model.topRatedMovieList.MovieRemoteKeys
+import com.example.movieapp.model.list.MovieListEntity
+import com.example.movieapp.model.list.MovieRemoteKeys
 
 @OptIn(ExperimentalPagingApi::class)
 class MoviesMediator(
@@ -98,7 +98,7 @@ class MoviesMediator(
     private suspend fun getRemoteKeysForLastItem(
         state: PagingState<Int, MovieListEntity>
     ): MovieRemoteKeys? {
-        return state.pages.lastOrNull() {
+        return state.pages.lastOrNull {
             it.data.isNotEmpty()
         }?.data?.lastOrNull()?.let { movie ->
             topRatedMoviesRemoteKeysDao.getRemoteKeys(id = movie.id)

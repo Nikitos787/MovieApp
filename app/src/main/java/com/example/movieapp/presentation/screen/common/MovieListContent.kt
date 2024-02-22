@@ -17,7 +17,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
-import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -37,14 +36,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import coil.compose.AsyncImagePainter
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import com.example.movieapp.R
-import com.example.movieapp.model.topRatedMovieList.MovieListEntity
+import com.example.movieapp.model.list.MovieListEntity
 import com.example.movieapp.util.Constants.BASE_URL_FOR_IMAGE
 
 @Composable
@@ -73,11 +71,11 @@ fun MovieListContent(
             ) {
                 items(count = items.itemCount) { index ->
                     val topRatedMovie = items[index]
-                    topRatedMovie?.let {
+                    topRatedMovie?.let { movieListEntity ->
                         TopRatedMovieItem(
-                            movieListEntity = it,
+                            movieListEntity = movieListEntity,
                             click = {
-                                onClick(it.id)
+                                onClick(movieListEntity.id)
                             })
 
                     }
@@ -122,7 +120,7 @@ fun MovieListContent(
 @Composable
 fun TopRatedMovieItem(
     movieListEntity: MovieListEntity,
-    click: () -> Unit
+    click: (String) -> Unit
 ) {
     val painter = rememberAsyncImagePainter(
         model = ImageRequest.Builder(LocalContext.current)
@@ -141,7 +139,7 @@ fun TopRatedMovieItem(
             .height(200.dp)
             .fillMaxWidth()
             .shadow(5.dp, RoundedCornerShape(10.dp))
-            .clickable { click() },
+            .clickable { click(movieListEntity.id) },
         contentAlignment = Alignment.BottomCenter
     ) {
         Image(
@@ -202,24 +200,5 @@ fun RatingCounter(modifier: Modifier, votes: String) {
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
         )
-    }
-}
-
-@Composable
-fun RetrySection(error: String, onRetry: () -> Unit) {
-    Column {
-        Text(
-            text = error,
-            color = Color.Red,
-            fontSize = 18.sp
-        )
-        Spacer(modifier = Modifier.height(8.dp))
-        Button(
-            onClick = { onRetry() },
-            modifier = Modifier
-                .align(Alignment.CenterHorizontally)
-        ) {
-            Text(text = stringResource(R.string.retry))
-        }
     }
 }

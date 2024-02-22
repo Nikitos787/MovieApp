@@ -1,4 +1,4 @@
-package com.example.movieapp.model.topRatedMovieList
+package com.example.movieapp.model.list
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

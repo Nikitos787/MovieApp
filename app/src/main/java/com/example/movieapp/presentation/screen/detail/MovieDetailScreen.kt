@@ -24,7 +24,6 @@ import com.example.movieapp.presentation.screen.common.ErrorMessage
 import com.example.movieapp.presentation.screen.common.MovieDetailItemData
 import com.example.movieapp.presentation.screen.common.PageLoader
 import com.example.movieapp.presentation.screen.common.TopAppBarrForMovieDetailScreen
-import com.example.movieapp.util.Constants
 import com.example.movieapp.util.Constants.ID
 import com.example.movieapp.util.Resource
 import kotlinx.coroutines.launch

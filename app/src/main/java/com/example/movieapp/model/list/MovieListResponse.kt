@@ -1,4 +1,4 @@
-package com.example.movieapp.model.topRatedMovieList
+package com.example.movieapp.model.list
 
 data class MovieListResponse(
     val page: Int,

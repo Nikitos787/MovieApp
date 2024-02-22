@@ -29,6 +29,7 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.movieapp.R
 import com.example.movieapp.model.detail.MovieDetailsEntity
+import com.example.movieapp.ui.theme.OrangeStar
 import com.example.movieapp.util.Constants
 import com.example.movieapp.util.Resource
 
@@ -56,7 +57,7 @@ fun MovieDetailItemData(movieDetailsResource: Resource<MovieDetailsEntity>) {
                     .size(18.dp),
                 imageVector = Icons.Filled.Star,
                 contentDescription = stringResource(R.string.expand_row_icon),
-                tint = Color(0xffffa500)
+                tint = OrangeStar
             )
             Text(
                 modifier = Modifier

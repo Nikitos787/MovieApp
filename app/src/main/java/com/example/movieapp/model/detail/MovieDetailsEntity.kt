@@ -1,8 +1,5 @@
 package com.example.movieapp.model.detail
 
-import kotlinx.serialization.Serializable
-
-@Serializable
 data class MovieDetailsEntity(
     val id: String,
     val adult: Boolean,

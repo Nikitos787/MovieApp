@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.movieapp.R
 import com.example.movieapp.model.detail.MovieDetailsEntity
+import com.example.movieapp.ui.theme.BlueHeader
 import com.example.movieapp.util.Constants
 import com.example.movieapp.util.Resource
 
@@ -47,12 +48,14 @@ fun TopAppBarrForMovieDetailScreen(
                 Icon(
                     imageVector = Icons.Default.ArrowBack,
                     contentDescription = stringResource(R.string.icon_for_back),
-                    tint = Color.Black,
                     modifier = Modifier
                         .size(36.dp)
                 )
             }
         },
-        colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Cyan)
+        colors = TopAppBarDefaults.topAppBarColors(
+            containerColor = BlueHeader,
+            navigationIconContentColor = Color.White
+        )
     )
 }
