@@ -41,6 +41,9 @@
 - Paging 3 library
 - Jetpack Compose
 
+## [VIDEO PRESENTATION](https://www.youtube.com/watch?v=FafIk-W8ZOU)
+
+
 ### :green_book: Project structure
 
 > The project has a Three-Tier Architecture:

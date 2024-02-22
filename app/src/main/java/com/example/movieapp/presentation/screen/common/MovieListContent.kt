@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -91,7 +92,8 @@ fun MovieListContent(
                             item {
                                 ErrorMessage(
                                     modifier = Modifier.fillParentMaxSize(),
-                                    message = error.error.localizedMessage!!,
+                                    message = error.error.message
+                                        ?: stringResource(id = R.string.Error_message),
                                     onClickRetry = { retry() })
                             }
                         }
@@ -115,7 +117,6 @@ fun MovieListContent(
         }
     }
 }
-
 
 @Composable
 fun TopRatedMovieItem(
@@ -170,10 +171,12 @@ fun TopRatedMovieItem(
                 text = movieListEntity.title,
                 maxLines = 1,
                 color = Color.White,
-                overflow = TextOverflow.Ellipsis
+                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier.weight(3f)
+
             )
             RatingCounter(
-                modifier = Modifier.weight(3f),
+                modifier = Modifier.weight(1f),
                 votes = "${(movieListEntity.vote_average * 10).toInt()}%"
             )
         }
@@ -191,14 +194,16 @@ fun RatingCounter(modifier: Modifier, votes: String) {
         Icon(
             imageVector = Icons.Default.Star,
             contentDescription = stringResource(R.string.rating_icon),
-            tint = Color.Red
+            tint = Color.Red,
+            modifier = Modifier.size(24.dp)
         )
         Text(
             text = votes,
             color = Color.White,
             fontWeight = FontWeight.Bold,
             maxLines = 1,
-            overflow = TextOverflow.Ellipsis
+            overflow = TextOverflow.Ellipsis,
+            modifier = Modifier.padding(start = 4.dp)
         )
     }
 }
